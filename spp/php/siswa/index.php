@@ -85,7 +85,7 @@
                         <th scope="col">KELAS</th>
                         <th scope="col">No.Telp</th>
                         <th scope="col">SPP</th>
-                        <th scope="col">AKSI</th>
+                        <th scope="col" colspan="3">AKSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,18 +97,8 @@
                         <td>0812-1077-9665</td>
                         <td>Rp. 50.000,00</td>
                         <td><button type="button" class="btn btn-info">Detail</button></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
+                        <td><i class="fas fa-user-edit bg-success p-2 text-white rounded"></i></td>
+                        <td><i class="fas fa-trash-alt bg-danger p-2 text-white rounded"></i></td>
                     </tr>
                 </tbody>
             </table>
