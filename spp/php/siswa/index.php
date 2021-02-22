@@ -76,7 +76,12 @@
         <div class="col-md-10 p-5">
             <h3><i class="fas fa-users m-2"></i>DAFTAR SISWA</h3>
             <hr>
-            <table class="table table-bordered table-striped">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fas fa-user-plus m-2"></i>TAMBAH DATA SISWA
+            </button>
+
+            <table class="table table-bordered table-striped mt-3">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -107,6 +112,65 @@
     </div>
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Siswa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="tambah.php" method="post">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">NISN</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NISN">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">NIS</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NIS">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">NAMA</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">KELAS</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Pilih Kelas</option>
+                                <option value="1">X-RPL A</option>
+                                <option value="2">X-RpL B</option>
+                                <option value="3">XI-RPL A</option>
+                                <option value="3">XI-RPL B</option>
+                                <option value="3">XII-RPL</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">No.Telp</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan No.Telp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">SPP</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Pilih SPP</option>
+                                <option value="1">Rp 50.000,00</option>
+                                <option value="2">Rp 100.000,00</option>
+                                <option value="3">Rp 150.000,00</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
