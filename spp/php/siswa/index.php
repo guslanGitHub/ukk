@@ -1,3 +1,13 @@
+<?php
+require_once('functions.php');
+//ambil data/query data dari tabel siswa
+$siswa = query("SELECT * FROM siswa");
+$kelas = query("SELECT * FROM kelas");
+$spp = query("SELECT * FROM spp");
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -34,7 +44,7 @@
         </div>
     </nav>
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-2 bg-dark pt-4 pb-5">
             <ul class="nav flex-column mr-4 mb-5">
                 <li class="nav-item">
@@ -81,7 +91,7 @@
                 <i class="fas fa-user-plus m-2"></i>TAMBAH DATA SISWA
             </button>
 
-            <table class="table table-bordered table-striped mt-3">
+            <table class="table table-bordered table-striped mt-3 align-middle">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -90,21 +100,33 @@
                         <th scope="col">KELAS</th>
                         <th scope="col">No.Telp</th>
                         <th scope="col">SPP</th>
-                        <th scope="col" colspan="3">AKSI</th>
+                        <th scope="col" colspan="3" style="text-align: center;">AKSI</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>00123456</td>
-                        <td>NAMA CODING</td>
-                        <td>X-RPL A</td>
-                        <td>0812-1077-9665</td>
-                        <td>Rp. 50.000,00</td>
-                        <td><button type="button" class="btn btn-info">Detail</button></td>
-                        <td><i class="fas fa-user-edit bg-success p-2 text-white rounded"></i></td>
-                        <td><i class="fas fa-trash-alt bg-danger p-2 text-white rounded"></i></td>
-                    </tr>
+                    <?php $i = 1; ?>
+                    <?php foreach ($siswa as $row) : ?>
+                        <tr>
+                            <th scope="row"><?php echo $i; ?></th>
+                            <td><?= $row['nisn']; ?></td>
+                            <td><?php echo $row['nama']; ?></td>
+                            <td><?php foreach ($kelas as $kls) {
+                                    if ($row['id_kelas'] == $kls['id_kelas']) {
+                                        echo $kls['nama_kelas'];
+                                    }
+                                } ?></td>
+                            <td><?php echo $row['no_telp']; ?></td>
+                            <td><?php foreach ($spp as $harga) {
+                                    if ($row['id_spp'] == $harga['id_spp']) {
+                                        echo $harga['nominal'];
+                                    }
+                                } ?></td>
+                            <td style="text-align: center;"><button type="button" class="btn btn-info">Detail</button></td>
+                            <td style="text-align: center;"><i class="fas fa-user-edit bg-success p-2 text-white rounded"></i></td>
+                            <td style="text-align: center;"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded"></i></td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
 
@@ -165,8 +187,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                    <button type="button" class="btn btn-primary">Tambah Data</button>
                 </div>
             </div>
         </div>
