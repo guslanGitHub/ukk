@@ -1,9 +1,28 @@
 <?php
 require_once('functions.php');
 //ambil data/query data dari tabel siswa
-$siswa = query("SELECT * FROM siswa");
+$siswa = query("SELECT * FROM siswa LIMIT 10");
 $kelas = query("SELECT * FROM kelas");
 $spp = query("SELECT * FROM spp");
+
+if (isset($_POST['submit'])) {
+    $nisn = $_POST['nisn'];
+    $nis = $_POST['nis'];
+    $nama = $_POST['nama'];
+    $id_kelas = (int)$_POST['id_kelas'];
+    $alamat = $_POST['alamat'];
+    $no_telp = $_POST['no_telp'];
+    $id_spp = (int)$_POST['id_spp'];
+    // var_dump($id_kelas);
+    // $query = "INSERT INTO `siswa` (`nisn`, `nis`, `nama`, `id_kelas`, `alamat`, `no_telp`, `id_spp`) VALUES ('5737535', '424u2', 'fsdjfkkas', '3', 'jfkdsajfa', '8428492', '1')";
+    $query = "INSERT INTO siswa 
+            VALUES
+            ('$nisn', '$nis', '$nama', '$id_kelas', '$alamat', '$no_telp', '$id_spp')
+            ";
+    mysqli_query($conn, $query);
+
+    // mysqli_error($conn);
+}
 
 ?>
 
@@ -24,7 +43,7 @@ $spp = query("SELECT * FROM spp");
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">SPP | <b>SMK NEGERI 2 KAIMANA</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,14 +141,34 @@ $spp = query("SELECT * FROM spp");
                                     }
                                 } ?></td>
                             <td style="text-align: center;"><button type="button" class="btn btn-info">Detail</button></td>
-                            <td style="text-align: center;"><i class="fas fa-user-edit bg-success p-2 text-white rounded"></i></td>
-                            <td style="text-align: center;"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded"></i></td>
+                            <td style="text-align: center;">
+                                <a href=""><i class="fas fa-user-edit bg-success p-2 text-white rounded"></i></a>
+                            </td>
+                            <td style="text-align: center;">
+                                <a href=""><i class="fas fa-trash-alt bg-danger p-2 text-white rounded"></i></a>
+                            </td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 
@@ -143,53 +182,56 @@ $spp = query("SELECT * FROM spp");
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="tambah.php" method="post">
+                    <form action="" method="post">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">NISN</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NISN">
+                            <input type="text" name="nisn" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NISN">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">NIS</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NIS">
+                            <input type="text" name="nis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NIS">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">NAMA</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama">
+                            <input type="text" name="nama" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">KELAS</label>
-                            <select class="form-select" aria-label="Default select example">
+                            <select name="id_kelas" class="form-select" aria-label="Default select example">
                                 <option selected>Pilih Kelas</option>
-                                <option value="1">X-RPL A</option>
-                                <option value="2">X-RpL B</option>
-                                <option value="3">XI-RPL A</option>
-                                <option value="3">XI-RPL B</option>
-                                <option value="3">XII-RPL</option>
+                                <?php foreach ($kelas as $kls) : ?>
+                                    <option value="
+                                    <?= $kls['id_kelas']; ?>">
+                                        <?php echo $kls['nama_kelas']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">No.Telp</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan No.Telp">
+                            <input type="text" name="no_telp" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan No.Telp">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">SPP</label>
-                            <select class="form-select" aria-label="Default select example">
+                            <select name="id_spp" class="form-select" aria-label="Default select example">
                                 <option selected>Pilih SPP</option>
-                                <option value="1">Rp 50.000,00</option>
-                                <option value="2">Rp 100.000,00</option>
-                                <option value="3">Rp 150.000,00</option>
+                                <?php foreach ($spp as $harga) : ?>
+                                    <option value="
+                                    <?= $harga['id_spp']; ?>">
+                                        <?php echo $harga['nominal']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
-                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
-                    <button type="button" class="btn btn-primary">Tambah Data</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Tambah Data</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
