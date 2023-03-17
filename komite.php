@@ -328,13 +328,11 @@
                               <input type="hidden" name="id" value="">
                               <div class="mb-3">
                                 <label for="namaLengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" list="datalistOptions" class="form-control border-warning" id="nama-siswa" name="nama" required autocomplete="off">
-                                <datalist id="datalistOptions">
-                                  <!-- lakukan pengulangan dgn foreach, data diperoleh dari tb_siswa kolom nama -->
-                                  <option value="Aswadi"></option>
-                                  <option value="Ardiansyah"></option>
-                                  <option value="Serli"></option>
-                                </datalist>
+                                <input type="text" class="form-control border-warning" id="nama-siswa" name="nama" required autocomplete="off">
+                              </div>
+                              <div class="mb-3">
+                                <label for="nis" class="form-label">NIS</label>
+                                <input type="text" class="form-control border-warning" id="nis-siswa" name="nis" required autocomplete="off">
                               </div>
                               <div class="mb-3">
                                 <label for="Kelas" class="form-label">Kelas</label>
