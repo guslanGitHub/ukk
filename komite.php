@@ -328,17 +328,17 @@
                               <input type="hidden" name="id" value="">
                               <div class="mb-3">
                                 <label for="namaLengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" list="datalistOptions" class="form-control border-warning" id="nis-siswa" name="nis" required autocomplete="off">
+                                <input type="text" list="datalistOptions" class="form-control border-warning" id="nama-siswa" name="nama" required autocomplete="off">
                                 <datalist id="datalistOptions">
                                   <!-- lakukan pengulangan dgn foreach, data diperoleh dari tb_siswa kolom nama -->
-                                  <option value="202072101">Aswadi</option>
-                                  <option value="202072004">Ardiansyah</option>
-                                  <option value="202072085">Serli</option>
+                                  <option value="Aswadi"></option>
+                                  <option value="Ardiansyah"></option>
+                                  <option value="Serli"></option>
                                 </datalist>
                               </div>
                               <div class="mb-3">
                                 <label for="Kelas" class="form-label">Kelas</label>
-                                <select class="form-select" aria-label="Default select example" name="nama_kelas">
+                                <select class="form-select" aria-label="Default select example" name="kelas">
                                   <option selected value="Pilihan Sebelumnya">Pilihan sebelumnya</option>
                                   <!-- lakukan pengulangan menggunakan foreach dengan mengambil data dari tb_kelas kolom nama_kelas -->
                                   <option value="X-AKL">X-AKL</option>
