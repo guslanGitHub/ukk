@@ -1,6 +1,10 @@
 <?php
 // Start the session
 session_start();
+if(isset($_POST['login'])){
+  header("Location: index.php");
+  exit;
+}
 //koneksi ke database
 $conn = mysqli_connect("localhost", "root", "", "db_komite");
 
