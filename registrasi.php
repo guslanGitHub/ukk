@@ -34,11 +34,11 @@
                         </div>
                         <div class="input-group flex-nowrap mb-3">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-lock"></i></span>
-                            <input type="password1" class="form-control border-warning" placeholder="Password" aria-label="password1" aria-describedby="addon-wrapping" name="password1">
+                            <input type="password" class="form-control border-warning" placeholder="Password" aria-label="password1" aria-describedby="addon-wrapping" name="password1">
                         </div>
                         <div class="input-group flex-nowrap mb-3">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-lock"></i></span>
-                            <input type="password2" class="form-control border-warning" placeholder="konfirmasi password" aria-label="password2" aria-describedby="addon-wrapping" name="password2">
+                            <input type="password" class="form-control border-warning" placeholder="konfirmasi password" aria-label="password2" aria-describedby="addon-wrapping" name="password2">
                         </div>
                         <div class="btn-group d-grid" role="group" aria-label="Basic example">
                             <button type="submit" class="btn btn-primary rounded-pill fw-bold" name="daftar">Daftar</button>
