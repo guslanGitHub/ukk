@@ -1,3 +1,43 @@
+<?php
+//koneksi ke database
+$conn = mysqli_connect("localhost", "root", "", "db_komite");
+
+//untuk tombol daftar
+if (isset($_POST['daftar'])) {
+    //tampung data dari form registrasi
+    $username = stripslashes($_POST['username']);
+    $password1 = mysqli_real_escape_string($conn, $_POST['password1']);
+    $pssword2 = mysqli_real_escape_string($conn, $_POST['password2']);
+    //konfirmasi password
+    if ($password1 !== $pssword2) {
+        echo "
+            <script>
+                alert('Konfirmasi Passwrod tidak sesuai');
+            </script>
+        ";
+    } else {
+        // eksripsi password
+        $password1 = password_hash($password1, PASSWORD_DEFAULT);
+        mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password1')");
+        if (mysqli_affected_rows($conn) > 0) {
+            echo "
+            <script>
+                alert('Anda Berhasil Daftar');
+                document.location.href = 'index.php';
+            </script>
+            ";
+        } else {
+            echo "
+            <script>
+                alert('Gagal Daftar');
+                document.location.href = 'registrasi.php';
+            </script>
+            ";
+        }
+    }
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
